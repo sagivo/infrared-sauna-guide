@@ -46,3 +46,9 @@ Size is the other: 53–55 inches square is a large footprint even in a corner. 
 ## Verdict
 
 The HeatWave Santa Fe 3-Person Corner is the capacity pick for households that sauna together: three-person room, corner-saving footprint, 7 carbon heaters, 1805W of heating power, and a 7-year warranty. Just go in knowing it needs a 20A circuit — that's the price of admission. Check the current price on Amazon and confirm your electrical situation before ordering.
+
+## Worth knowing before you buy
+
+**The 20A circuit is the real price.** The Santa Fe is the only model here that needs 120V/20A, and that requirement decides the purchase for many buyers. Check your breaker panel first: garages and laundry rooms often already have 20A lines; bedrooms and basements rarely do. If you need an electrician, get the quote before comparing prices — the work can narrow or erase the gap against 15A three-person cabins like the [Dynamic Madrid](/saunas/dynamic-madrid-3-person/). Our [electrical requirements guide](/posts/infrared-sauna-electrical-requirements/) has the full 15A vs 20A picture.
+
+**Corner placement saves real space.** The 53–55 inch square footprint sounds large, but tucked into a corner it consumes less usable room than a rectangular 3-person cabin. Measure the corner, the doorways panels must pass through, and leave working room on two sides for assembly.
