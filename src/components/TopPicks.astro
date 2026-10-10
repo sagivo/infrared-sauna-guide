@@ -22,7 +22,7 @@ const rows = picks.map((p) => ({ ...p, m: getModel(p.id) }));
         <div class="pr-main">
           <span class="pr-label">{label}</span>
           <a class="pr-name" href={`/saunas/${m.id}/`}>{m.name}</a>
-          <span class="pr-specs">{m.capacity}-person · {m.extDims} · {m.wattage}W</span>
+          <span class="pr-specs">{m.capacity} person{m.capacity === 1 ? "" : "s"} · {m.wattage.toLocaleString()} W · {m.maxTempF}°F max</span>
         </div>
         <span class="score sm" title="Guide score out of 10">{m.score.toFixed(1)}</span>
         <div class="pr-buy">

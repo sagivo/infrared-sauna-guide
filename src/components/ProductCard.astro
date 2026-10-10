@@ -1,11 +1,12 @@
 ---
-import type { SaunaModel } from "../data/models";
+import type { MowerModel } from "../data/models";
+
 import BuyButton from "./BuyButton.astro";
 import ProductImage from "./ProductImage.astro";
 import PriceTier from "./PriceTier.astro";
 
 interface Props {
-  model: SaunaModel;
+  model: MowerModel;
   label?: string;
   rank?: number;
   /** compact = no pros/cons, used in top-picks grids */
@@ -29,10 +30,9 @@ const { model: m, label, rank, compact = false, featured = false, accent } = Ast
       <span class="score" title="Guide score out of 10">{m.score.toFixed(1)}</span>
     </div>
     <ul class="chips" aria-label="Key specs">
-      <li>{m.capacity}-person</li>
-      <li>{m.extDims}</li>
-      <li>{m.heaterCount} heaters · {m.wattage}W</li>
-      <li>{m.electrical}</li>
+      <li>{m.capacity} person{m.capacity === 1 ? "" : "s"}</li>
+      <li>{m.wattage.toLocaleString()} W</li>
+      <li>{m.maxTempF}°F max</li>
     </ul>
     <p class="pc-best">{m.bestFor}</p>
     {!compact && (

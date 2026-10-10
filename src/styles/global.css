@@ -1,34 +1,34 @@
-/* Infrared Sauna Guide design system — "warm cedar" theme.
+/* Robot Lawn Mower Guide design system — "striped lawn" theme.
    Dark forest + electric lime brand, warm paper background, and one loud
    buy colour (amber) reserved for Amazon links so the money buttons always
    stand out. */
 :root {
-  --paper: #faf6ee;
-  --paper-2: #f3ecdc;
+  --paper: #f6f4ec;
+  --paper-2: #eeeadc;
   --card: #ffffff;
-  --ink: #231309;
-  --ink-2: #4a3423;
-  --muted: #7d6c58;
-  --line: #e9dcc4;
-  --line-2: #d9c7a6;
-  --forest: #2b1508;
-  --forest-2: #3f2010;
-  --forest-3: #5c2d13;
-  --leaf: #c2410c;
-  --leaf-2: #ea580c;
-  --lime: #fbbf24;
-  --lime-2: #fde9b8;
-  --buy: #f59e0b;
-  --buy-hi: #fbbf24;
-  --hot: #dc2626;
+  --ink: #0b1a10;
+  --ink-2: #2b3a30;
+  --muted: #5d6a60;
+  --line: #e2ddcd;
+  --line-2: #d3cdb9;
+  --forest: #0c2215;
+  --forest-2: #12321e;
+  --forest-3: #1a4529;
+  --leaf: #b45309;
+  --leaf-2: #d97706;
+  --lime: #fcd34d;
+  --lime-2: #fef3c7;
+  --buy: #ffc21a;
+  --buy-hi: #ffd34f;
+  --hot: #ff6a3d;
   --sky: #2a78d6;
   --amber-bg: #fff6dc;
   --amber-line: #efd98e;
   --amber-ink: #6b5310;
   --radius: 18px;
   --radius-sm: 12px;
-  --shadow: 0 1px 2px rgba(35, 19, 9, .06), 0 12px 32px -12px rgba(35, 19, 9, .18);
-  --shadow-lg: 0 2px 4px rgba(35, 19, 9, .06), 0 28px 60px -20px rgba(35, 19, 9, .35);
+  --shadow: 0 1px 2px rgba(11, 26, 16, .06), 0 12px 32px -12px rgba(11, 26, 16, .18);
+  --shadow-lg: 0 2px 4px rgba(11, 26, 16, .06), 0 28px 60px -20px rgba(11, 26, 16, .35);
   --press: 0 3px 0 var(--ink);
   --stripes: repeating-linear-gradient(115deg, rgba(255,255,255,.035) 0 60px, rgba(0,0,0,.05) 60px 120px);
   --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -192,7 +192,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, th:focus-visible, 
   display: grid; place-items: center; padding: 1.4rem 1rem .6rem; min-height: 190px;
   background: radial-gradient(60% 70% at 50% 75%, var(--lime-2), transparent 70%), linear-gradient(180deg, #fff, #f7fbef);
 }
-.sp-media .sauna-art { width: 260px; height: auto; filter: drop-shadow(0 18px 18px rgba(35,19,9,.2)); animation: bob 5s ease-in-out infinite; }
+.sp-media .mower-art { width: 260px; height: auto; filter: drop-shadow(0 18px 18px rgba(11,26,16,.2)); animation: bob 5s ease-in-out infinite; }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 .sp-body { padding: 1.1rem 1.4rem 1.4rem; }
 .sp-name { font-size: 1.5rem; margin: 0 0 .6rem; }
@@ -227,7 +227,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, th:focus-visible, 
   .hero-proof span { font-size: .72rem; }
   .cta-row .btn { flex: 1 1 100%; }
   .sp-media { min-height: 150px; }
-  .sp-media .sauna-art { width: 200px; }
+  .sp-media .mower-art { width: 200px; }
 }
 
 /* trust bar */
@@ -308,10 +308,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible, th:focus-visible, 
   background: radial-gradient(60% 65% at 50% 80%, color-mix(in srgb, var(--award) 35%, transparent), transparent 70%), linear-gradient(180deg, #fbfaf5, #f3f1e7);
   border-bottom: 1px solid var(--line);
 }
-.pc-media .sauna-art { width: 190px; height: auto; filter: drop-shadow(0 12px 12px rgba(35,19,9,.16)); transition: transform .25s; }
-.product-card:hover .pc-media .sauna-art { transform: scale(1.04) translateY(-3px); }
+.pc-media .mower-art { width: 190px; height: auto; filter: drop-shadow(0 12px 12px rgba(11,26,16,.16)); transition: transform .25s; }
+.product-card:hover .pc-media .mower-art { transform: scale(1.04) translateY(-3px); }
 .product-card.compact .pc-media { min-height: 130px; padding-top: 2rem; }
-.product-card.compact .pc-media .sauna-art { width: 150px; }
+.product-card.compact .pc-media .mower-art { width: 150px; }
 .pc-body { display: flex; flex-direction: column; flex: 1; padding: 1.1rem 1.2rem 1.25rem; }
 .pc-head { display: flex; gap: .8rem; align-items: flex-start; justify-content: space-between; }
 .pc-name { margin: 0; font-size: 1.15rem; letter-spacing: -.02em; }
@@ -374,7 +374,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, th:focus-visible, 
 }
 .matcher::after {
   content: ""; position: absolute; right: -60px; bottom: -60px; width: 220px; height: 220px; border-radius: 50%;
-  background: repeating-linear-gradient(115deg, rgba(35,19,9,.06) 0 14px, transparent 14px 28px); pointer-events: none;
+  background: repeating-linear-gradient(115deg, rgba(11,26,16,.06) 0 14px, transparent 14px 28px); pointer-events: none;
 }
 .matcher h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 0 0 .7rem; }
 .matcher p { margin: 0; color: var(--ink-2); font-size: 1.02rem; }
@@ -391,7 +391,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, th:focus-visible, 
 .mq-opts input:checked + span { background: var(--ink); color: var(--lime); }
 .mq-opts input:focus-visible + span { outline: 3px solid var(--sky); outline-offset: 2px; }
 .mq .btn { justify-self: start; }
-.mq .btn.dark { box-shadow: 0 3px 0 rgba(35,19,9,.35); }
+.mq .btn.dark { box-shadow: 0 3px 0 rgba(11,26,16,.35); }
 @media (max-width: 820px) {
   .matcher { grid-template-columns: 1fr; padding: 1.6rem 1.3rem; gap: 1.5rem; border-radius: 22px; }
   .mq .btn { justify-self: stretch; }
@@ -584,7 +584,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, th:focus-visible, 
 .pr-rank { font-family: var(--font-display); font-weight: 800; color: var(--ink); font-size: 1.05rem; width: 2.2rem; height: 2.2rem; display: grid; place-items: center; border-radius: 50%; background: var(--paper-2); }
 .winner .pr-rank { background: var(--lime); }
 .pr-img { display: grid; place-items: center; line-height: 0; }
-.pr-img .sauna-art { width: 84px; height: auto; }
+.pr-img .mower-art { width: 84px; height: auto; }
 .pr-main { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; }
 .pr-label { font-size: .7rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--leaf); }
 .prose a.pr-name, a.pr-name { color: var(--ink); text-decoration: none; font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; margin: .15rem 0; }
@@ -597,7 +597,7 @@ a.pr-name:hover { text-decoration: underline; }
   .pick-row { grid-template-columns: 64px minmax(0, 1fr) auto; grid-template-areas: "img main score" "buy buy buy"; gap: .6rem .8rem; padding: .9rem; }
   .pick-row.winner { padding-top: 1.3rem; }
   .pr-rank { display: none; }
-  .pr-img { grid-area: img; } .pr-img .sauna-art, .pr-img img { width: 64px; height: auto; }
+  .pr-img { grid-area: img; } .pr-img .mower-art, .pr-img img { width: 64px; height: auto; }
   .pr-main { grid-area: main; } .pick-row .score { grid-area: score; }
   .pr-buy { grid-area: buy; flex-direction: row; justify-content: space-between; align-items: center; }
   .pr-buy .btn { flex: 1; max-width: 62%; }
@@ -681,7 +681,7 @@ section[id] { scroll-margin-top: 90px; }
   background: radial-gradient(60% 60% at 50% 72%, var(--lime-2), transparent 70%), linear-gradient(180deg, #fbfaf5, #efece0);
   border-right: 1px solid var(--line);
 }
-.rh-art .sauna-art { width: 300px; height: auto; filter: drop-shadow(0 20px 20px rgba(35,19,9,.2)); }
+.rh-art .mower-art { width: 300px; height: auto; filter: drop-shadow(0 20px 20px rgba(11,26,16,.2)); }
 .rh-art .ring { position: absolute; top: 1.1rem; left: 1.1rem; box-shadow: var(--shadow); }
 .rh-body { padding: 2rem 2.1rem; display: flex; flex-direction: column; }
 .review-hero h1 { margin: .5rem 0 .6rem; font-size: clamp(1.9rem, 4vw, 2.7rem); letter-spacing: -.035em; }
@@ -696,7 +696,7 @@ section[id] { scroll-margin-top: 90px; }
 @media (max-width: 800px) {
   .review-hero { grid-template-columns: 1fr; border-radius: 22px; box-shadow: 5px 5px 0 var(--lime); }
   .rh-art { min-height: 200px; padding: 1.5rem; border-right: 0; border-bottom: 1px solid var(--line); }
-  .rh-art .sauna-art { width: 220px; }
+  .rh-art .mower-art { width: 220px; }
   .rh-body { padding: 1.4rem 1.25rem 1.5rem; }
   .rh-buy .btn { flex: 1 1 100%; }
 }
@@ -910,7 +910,7 @@ section[id] { scroll-margin-top: 90px; }
 .site-footer a.btn.secondary:hover { color: var(--lime); }
 @media (max-width: 800px) {
   .rh-art { min-height: 0; padding: 1.1rem 1rem .9rem; }
-  .rh-art .sauna-art { width: 170px; }
+  .rh-art .mower-art { width: 170px; }
   .rh-art .ring.lg { width: 3.6rem; height: 3.6rem; font-size: 1.15rem; top: .8rem; left: .8rem; }
   .rh-art .ring.lg::before { inset: 5px; }
   .review-hero h1 { font-size: 1.75rem; }

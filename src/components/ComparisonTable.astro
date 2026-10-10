@@ -1,10 +1,10 @@
 ---
-import type { SaunaModel } from "../data/models";
+import type { MowerModel } from "../data/models";
 import PriceTier from "./PriceTier.astro";
 import { AFFILIATE_REL, amazonLink } from "../lib/amazon";
 
 interface Props {
-  models: SaunaModel[];
+  models: MowerModel[];
   sortable?: boolean;
   caption?: string;
 }
@@ -18,11 +18,10 @@ const { models, sortable = false, caption } = Astro.props;
       <tr>
         <th scope="col" data-sort="text">Model</th>
         <th scope="col" data-sort="num">Score</th>
-        <th scope="col" data-sort="num">Seats</th>
-        <th scope="col" data-sort="text">Footprint</th>
-        <th scope="col" data-sort="num">Heaters</th>
-        <th scope="col" data-sort="num">Wattage</th>
-        <th scope="col" data-sort="text">Electrical</th>
+        <th scope="col" data-sort="num">Capacity</th>
+        <th scope="col" data-sort="num">Max temp</th>
+        <th scope="col" data-sort="text">Heaters</th>
+        <th scope="col" data-sort="text">EMF</th>
         <th scope="col" data-sort="num">Price tier</th>
         <th scope="col"><span class="sr-only">Buy</span></th>
       </tr>
@@ -35,11 +34,10 @@ const { models, sortable = false, caption } = Astro.props;
             <span class="score sm cmp-mscore" aria-hidden="true">{m.score.toFixed(1)}</span>
           </th>
           <td class="c-score" data-label="Score" data-v={m.score}><span class="score sm">{m.score.toFixed(1)}</span></td>
-          <td data-label="Seats" data-v={m.capacity}>{m.capacity}</td>
-          <td data-label="Footprint" data-v={m.footprint[0] * m.footprint[1]}>{m.extDims}</td>
-          <td data-label="Heaters" data-v={m.heaterCount}>{m.heaterCount}</td>
-          <td data-label="Wattage" data-v={m.wattage}>{m.wattage}W</td>
-          <td data-label="Electrical" data-v={m.electrical}>{m.electrical}</td>
+          <td data-label="Capacity" data-v={m.capacity}>{m.capacity} person{m.capacity === 1 ? "" : "s"}</td>
+          <td data-label="Max temp" data-v={m.maxTempF}>{m.maxTempF}°F</td>
+          <td data-label="Heaters" data-v={m.wattage}>{m.heaters}</td>
+          <td data-label="EMF" data-v={m.emf}>{m.emf}</td>
           <td data-label="Price tier" data-v={m.priceLow}><PriceTier model={m} label={false} /></td>
           <td class="c-buy">
             <a class="btn btn-xs buy" href={amazonLink(m.query, m.asin)} rel={AFFILIATE_REL} target="_blank">

@@ -1,10 +1,10 @@
 ---
-import type { SaunaModel } from "../data/models";
+import type { MowerModel } from "../data/models";
 import { accessoriesFor, KIND_LABEL } from "../data/accessories";
 import { AFFILIATE_REL, amazonLink } from "../lib/amazon";
 
 interface Props {
-  model: SaunaModel;
+  model: MowerModel;
 }
 const { model: m } = Astro.props;
 const rows = accessoriesFor(m.id);
@@ -14,8 +14,7 @@ const rows = accessoriesFor(m.id);
   <section class="acc" aria-labelledby="accessories">
     <h2 id="accessories">Accessories for the {m.shortName}</h2>
     <p class="acc-intro">
-      Universal add-ons that fit any infrared sauna. The EMF meter is the one we'd buy first —
-      it's how you verify a maker's low-EMF claims yourself.
+      Hand-picked add-ons sold on Amazon that work with any infrared sauna. Check the listing before you buy.
     </p>
     <ul class="acc-list">
       {rows.map((a) => (
@@ -23,7 +22,7 @@ const rows = accessoriesFor(m.id);
           <span class="acc-kind">{KIND_LABEL[a.kind]}</span>
           <div class="acc-main">
             <strong>{a.name}</strong>
-            <span class="acc-tag">Universal fit · ~${a.price}</span>
+            <span class="acc-tag">{a.brand} · {a.fits.includes("universal") ? "Universal fit" : "Model-specific"}</span>
             <p>{a.why}</p>
           </div>
           <div class="acc-buy">
@@ -32,6 +31,6 @@ const rows = accessoriesFor(m.id);
         </li>
       ))}
     </ul>
-    <p class="fine">Prices are typical Amazon street prices and change often. More in our <a href="/posts/low-emf-infrared-sauna-guide/">low-EMF guide</a>.</p>
+    <p class="fine">Compatibility checked October 2026. More in our <a href="/accessories/">sauna accessories guide</a>.</p>
   </section>
 )}

@@ -496,3 +496,4 @@ export function footprintSqFt(m: SaunaModel): number {
 export function sessionKwh(m: SaunaModel): number {
   return (m.wattage * 0.75) / 1000;
 }
+export type MowerModel = SaunaModel;
