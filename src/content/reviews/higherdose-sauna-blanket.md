@@ -46,3 +46,9 @@ The 1-year warranty is the shortest here, and $699 for a blanket is premium pric
 ## Verdict
 
 The HigherDOSE Infrared Sauna Blanket V4 is the best portable option and the cheapest way into infrared heat: 175°F of direct body heat, low EMF, 350–420W efficiency, and zero footprint — for $699. It won't replace a cabin's ritual, but for renters, travelers, and the curious, it's the smartest first step. Check the current price on Amazon.
+
+## Worth knowing before you buy
+
+**It's heat therapy, not a sauna room.** The blanket delivers infrared heat directly to your body at up to 175°F, but there's no enclosed cabin, no bench, no wooden interior — your head stays out. Owners describe effective sweating and relaxation, but if the ritual of closing a sauna door matters to you, save for a cabin. Our [blanket vs cabin comparison](/posts/infrared-sauna-vs-sauna-blanket/) breaks down the trade-offs.
+
+**The renter's pick.** Zero footprint, 350–420W from any outlet, rolls into a closet — for apartments and rentals, the blanket sidesteps every constraint that makes cabins hard: no floor space, no assembly, no landlord conversations. At ~$0.05 per session in electricity (see our [running-costs guide](/posts/infrared-sauna-running-costs/)), it's also the cheapest to run by a wide margin.
