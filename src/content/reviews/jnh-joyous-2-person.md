@@ -45,3 +45,9 @@ Pricing swings: this model moves within ~$1,199–$1,899, so the gap between it 
 ## Verdict
 
 The JNH Lifestyles Joyous 2-Person wins on value because it gives you more of the things that matter — heaters, size, dual-wall build, and a published EMF number — for less money than the brand-name alternatives. The shorter warranty is the trade-off, and for many buyers that's an acceptable one. Check the current price on Amazon; when it's near the bottom of its range, it's the best deal in the two-person class.
+
+## Worth knowing before you buy
+
+**The warranty is the trade.** Two years is short next to Radiant's seven and Dynamic's five. JNH's bet is that the lower price more than compensates — and at ~$1,199 on a good sale day, the math usually works. If long coverage is your top priority, the [Radiant Coronado](/saunas/radiant-coronado-2-person/) is the alternative.
+
+**Buy on a dip.** Street pricing swings between ~$1,199 and ~$1,899 — the widest range in this guide. Set a price alert and watch it for a week or two; buying near the top erases the value advantage. And if EMF is on your checklist, our [low-EMF guide](/posts/low-emf-infrared-sauna-guide/) explains why the Joyous's published 2–3 mG figure matters.
