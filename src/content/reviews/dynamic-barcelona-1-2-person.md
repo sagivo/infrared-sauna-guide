@@ -45,3 +45,9 @@ Heat-up is comparable to similar small cabins: expect a reasonable preheat windo
 ## Verdict
 
 The Dynamic Barcelona 1-2 Person is the small-space answer in the Amazon infrared sauna lineup: low-EMF carbon heaters, hemlock build, plug-and-play 120V power, and a footprint most two-person cabins can't match. If your room is the limiting factor, this is the cabin built for it — check the current price on Amazon and measure your space twice before ordering.
+
+## Worth knowing before you buy
+
+**The small-space specialist.** The Barcelona exists for rooms other 2-person cabins can't fit — spare bathrooms, tight bedrooms, apartment corners. You give up some interior sprawl versus the Venice Elite, but the low-EMF carbon heaters and hemlock build aren't downgraded. Run your dimensions through our [space-fit checker](/tools/space-fit-checker/) before deciding the room is too small.
+
+**"1-2 person" means one comfortably, two cozily.** Treat the second seat as occasional use. If shared sessions are the plan rather than the exception, the Venice Elite's roomier interior is worth the extra footprint — and our [indoor placement guide](/posts/indoor-vs-outdoor-infrared-sauna/) covers where each size actually fits.
