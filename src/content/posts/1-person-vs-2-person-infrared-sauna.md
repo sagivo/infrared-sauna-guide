@@ -1,5 +1,6 @@
 ---
 title: "1-Person vs. 2-Person Infrared Sauna: Which Size Should You Buy?"
+seoTitle: "1-Person vs 2-Person Infrared Sauna: Which Size?"
 description: "Footprint, cost, heat-up time, and who each size actually suits — an honest head-to-head to stop you buying the wrong size."
 pubDate: 2026-10-10
 updatedDate: 2026-10-10
@@ -29,7 +30,7 @@ The most common sizing mistake in infrared saunas is buying for the fantasy — 
 
 ## Footprint
 
-A compact 1-person cabin like the [Dynamic Elite](amazon:dynamic-elite-1-person) needs just 28"W x 35.5"D — smaller than many armchairs. A comfortable 2-person cabin like the [JNH Joyous](amazon:jnh-joyous-2-person) needs 47.3"W x 39.5"D, roughly 60% more floor area. In apartments and small bedrooms, that difference decides whether a sauna fits at all.
+A compact 1-person cabin like the [Dynamic Elite](amazon:dynamic-elite-1-person) needs just 28"W x 35.5"D — smaller than many armchairs. A comfortable 2-person cabin like the [JNH Joyous](amazon:jnh-joyous-2-person) needs 47.3"W x 39.5"D, roughly 60% more floor area. In apartments and small bedrooms, that difference decides whether a sauna fits at all. Run your room through our [space-fit checker](/tools/space-fit-checker/) before you fall in love with a model.
 
 ## Cost
 
@@ -48,3 +49,11 @@ Smaller cabins heat faster because there's less air to warm, and they draw fewer
 ## The tiebreaker rule
 
 When you're genuinely torn, size up. A slightly-too-big sauna costs a few hundred more and a few extra minutes of heat-up. A slightly-too-small sauna gets used less — and an unused sauna is the most expensive kind. Check the current price on Amazon for both sizes you're considering; sales often narrow the gap.
+
+## Three details buyers forget
+
+**Door swing and assembly clearance.** A cabin's footprint isn't its installed footprint. You need working room around the unit during assembly — typically a foot or more on the sides where panels slot together — plus door swing clearance in front. A 2-person cabin in a tight room can become un-assemblable even if the finished dimensions technically fit. Measure the room, then subtract assembly clearance before comparing to cabin specs. Our [how-to-choose guide](/posts/how-to-choose-infrared-sauna/) walks through the full pre-purchase checklist.
+
+**Ceiling height.** Cabins in this guide run 65–75" tall. That's fine under standard 8-foot ceilings, but basement buyers with 7-foot ceilings or soffits need to check carefully — the assembled height plus a small margin has to clear, and taller users want headroom inside too.
+
+**Resale and moving.** A 1-person cabin is dramatically easier to disassemble, move, and resell — it fits through standard doorways and one strong person can manage most panels. A 3-person cabin is closer to furniture: heavier panels, more of them, and a smaller pool of secondhand buyers. If you rent or expect to move within a few years, factor portability into the size decision. For a full side-by-side of every model we cover, see our [best infrared saunas of 2026](/posts/best-infrared-saunas-2026/).
