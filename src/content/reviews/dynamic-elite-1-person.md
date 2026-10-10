@@ -45,3 +45,9 @@ Height is worth a second look. At 65 inches tall, tall users should check headro
 ## Verdict
 
 The Dynamic Elite 1-Person Compact is the no-waste choice for solo sauna people: the smallest footprint in this guide, ultra-low EMF heaters, hemlock build, and plug-and-play power at the lowest cabin price on the list. If you sauna alone and your space is the constraint, nothing else here is this efficient. Check the current price on Amazon — sales occasionally bring it close to ~$1,200.
+
+## Worth knowing before you buy
+
+**Assembly is a one-person job.** The Elite's panels are light enough that most buyers assemble it solo in about an hour — a genuine advantage over 2- and 3-person cabins that really want two people. Assemble it in the room where it will live; even small cabins are awkward to move once built.
+
+**Who should skip it.** Anyone much over 6'2" should check the 65-inch ceiling height against seated headroom, and anyone who might ever sauna with a partner should read our [1-person vs 2-person comparison](/posts/1-person-vs-2-person-infrared-sauna/) first — the price gap to a 2-person cabin is smaller than most buyers expect. If budget rather than space is the binding constraint, our [best under $1,000 guide](/posts/best-infrared-sauna-under-1000/) covers the only real sub-$1,000 option.
