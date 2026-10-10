@@ -1,7 +1,7 @@
-// Central site config. Domain: infrared-sauna-guide.pages.dev
+// Central site config. Domain: infrared-sauna-guide-cg2.pages.dev
 // (also update `SITE` in astro.config.mjs and public/robots.txt).
 export const SITE_NAME = "Infrared Sauna Guide";
-export const SITE_URL = "https://infrared-sauna-guide.pages.dev";
+export const SITE_URL = "https://infrared-sauna-guide-cg2.pages.dev";
 export const SITE_TAGLINE = "Infrared sauna reviews, comparisons, and cost calculators.";
 export const SITE_DESCRIPTION =
   "Independent guides to home infrared saunas: model comparisons, EMF explainers, sizing and cost calculators, and electrical setup advice so you buy the right sauna the first time.";
