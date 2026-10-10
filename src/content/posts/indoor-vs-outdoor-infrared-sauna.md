@@ -20,7 +20,7 @@ faq:
     a: "A finished or unfinished basement is the most popular: space is plentiful, ambient coolness doesn't matter much, and nobody hears the Bluetooth speaker. Garages work well too. Spare bathrooms handle moisture best."
 ---
 
-Short answer: every model in this guide is indoor-only. Longer answer: here's what that means for where yours goes, and what "outdoor infrared sauna" actually requires.
+Short answer: every model in this guide is indoor-only. Longer answer: here's what that means for where yours goes, and what "outdoor infrared sauna" actually requires. If you haven't picked a model yet, start with our [best infrared saunas of 2026](/posts/best-infrared-saunas-2026/) — all ten are indoor cabins.
 
 ## Why these are indoor-only
 
@@ -52,4 +52,4 @@ A fully covered, enclosed patio — roof, walls, protection from wind-driven rai
 - **Ceiling height:** most cabins here are 65–75" tall; confirm your ceiling clears the assembled height plus a margin.
 - **Ventilation:** infrared cabins don't steam like traditional saunas, but a room with some airflow stays fresher.
 
-Measure twice, check the current price on Amazon once, and put the sauna where you'll actually use it — convenience beats the theoretically perfect room every time.
+Measure twice, check the current price on Amazon once, and put the sauna where you'll actually use it — convenience beats the theoretically perfect room every time. Not sure a cabin fits your space at all? Our [space-fit checker](/tools/space-fit-checker/) compares your room dimensions against every model in this guide.
