@@ -43,3 +43,9 @@ It's priced above the Venice Elite — you're paying for the extra space, not ex
 ## Verdict
 
 The Dynamic Andora 2-Person is the "Venice Elite, but roomier" option: same low-EMF far-infrared formula and hemlock build in a 47-inch-wide cabin that's genuinely comfortable for two. If the best overall is almost right but a touch small, the Andora is the upgrade. Check the current price on Amazon to compare it against the Venice Elite.
+
+## Worth knowing before you buy
+
+**Roomier than the Venice Elite, same formula.** The Andora is for buyers who like everything about the best overall pick but want more elbow room: same low-EMF far-infrared heaters, same hemlock build, 47 inches of width. Compare it directly against the [Venice Elite](/saunas/dynamic-venice-elite-2-person/) on current pricing — the premium buys space, not features.
+
+**Mind the footprint.** At 47 inches wide it needs meaningfully more floor than compact cabins, and the panels need a clear path to the room. Our [space-fit checker](/tools/space-fit-checker/) confirms fit against your actual room dimensions.
