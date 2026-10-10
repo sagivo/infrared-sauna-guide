@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://infrared-sauna-guide.pages.dev/sitemap-index.xml

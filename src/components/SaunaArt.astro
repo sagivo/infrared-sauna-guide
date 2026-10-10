@@ -1,0 +1,91 @@
+---
+// Front-view sauna cabin illustration generated from the model's real shape:
+// capacity sets the cabin width, corner units get an angled door, the blanket
+// model gets a rolled blanket instead of a cabin. Heat waves rise above.
+// Used whenever no licensed product photo exists in src/assets/saunas/.
+import type { SaunaModel } from "../data/models";
+
+interface Props {
+  model: SaunaModel;
+  size?: number;
+}
+const { model: m, size = 96 } = Astro.props;
+
+// Wood tones per brand; accent = heater glow.
+const COLORS: Record<string, [string, string, string]> = {
+  "Dynamic Saunas": ["#b07a45", "#8a5a2e", "#ff8c42"],
+  "JNH Lifestyles": ["#c09a63", "#96703d", "#ff9e4f"],
+  "Radiant Saunas": ["#a9763f", "#7f5527", "#ff8c42"],
+  HeatWave: ["#b3814d", "#8a5f30", "#ffa25e"],
+  SunRay: ["#9c5f33", "#74431f", "#ff7b3d"],
+  HigherDOSE: ["#3d4b5c", "#2a3542", "#e0635a"],
+};
+const [wood, woodDark, glow] = COLORS[m.brand] ?? ["#b07a45", "#8a5a2e", "#ff8c42"];
+const uid = `s-${m.id}-${Math.random().toString(36).slice(2, 7)}`;
+
+// Cabin width scales with capacity: 1-person narrow, 2-person standard, 3-person wide.
+const w = m.capacity >= 3 ? 120 : m.capacity === 2 ? 100 : 78;
+const x0 = (170 - w) / 2;
+const isBlanket = m.id === "higherdose-sauna-blanket";
+const isCorner = m.id === "heatwave-santa-fe-3-person";
+---
+
+{isBlanket ? (
+  <svg class="sauna-art" width={size} height={Math.round(size * 0.7)} viewBox="0 0 170 120" role="img" aria-label={`Illustration of the ${m.name}`}>
+    <defs>
+      <linearGradient id={uid} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color={wood} />
+        <stop offset="1" stop-color={woodDark} />
+      </linearGradient>
+    </defs>
+    <ellipse cx="85" cy="108" rx="66" ry="5" fill="rgba(35,19,9,.14)" />
+    <rect x="30" y="72" width="110" height="30" rx="15" fill={`url(#${uid})`} />
+    <rect x="30" y="72" width="110" height="10" rx="5" fill="rgba(255,255,255,.18)" />
+    <rect x="128" y="80" width="8" height="14" rx="3" fill={glow} />
+    {[52, 72, 92, 112].map((x) => (
+      <path d={`M${x} 62 q4 -8 0 -16 q-4 -8 0 -16`} stroke={glow} stroke-width="3" fill="none" stroke-linecap="round" opacity=".8" />
+    ))}
+    <text x="85" y="46" text-anchor="middle" font-size="10" font-weight="800" fill={glow} font-family="system-ui, sans-serif" letter-spacing=".12em">PORTABLE</text>
+  </svg>
+) : (
+  <svg class="sauna-art" width={size} height={Math.round(size * 0.7)} viewBox="0 0 170 120" role="img" aria-label={`Illustration of the ${m.name}`}>
+    <defs>
+      <linearGradient id={uid} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color={wood} />
+        <stop offset="1" stop-color={woodDark} />
+      </linearGradient>
+      <linearGradient id={`${uid}-glass`} x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#cfe3ee" stop-opacity=".85" />
+        <stop offset="1" stop-color="#9db8c9" stop-opacity=".85" />
+      </linearGradient>
+    </defs>
+    <ellipse cx="85" cy="113" rx={w / 2 + 8} ry="5" fill="rgba(35,19,9,.14)" />
+    {/* heat waves */}
+    {[0, 1, 2].map((i) => (
+      <path d={`M${x0 + 18 + i * ((w - 36) / 2)} 26 q5 -8 0 -16`} stroke={glow} stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".75" />
+    ))}
+    {/* cabin body */}
+    <rect x={x0} y="30" width={w} height="80" rx="4" fill={`url(#${uid})`} />
+    {/* horizontal wood planks */}
+    {[44, 58, 72, 86, 100].map((y) => (
+      <line x1={x0 + 3} y1={y} x2={x0 + w - 3} y2={y} stroke="rgba(0,0,0,.18)" stroke-width="1.5" />
+    ))}
+    {/* roof trim */}
+    <rect x={x0 - 4} y="26" width={w + 8} height="8" rx="3" fill={woodDark} />
+    {/* glass door */}
+    {isCorner ? (
+      <polygon points={`${x0 + w * 0.3},40 ${x0 + w * 0.7},40 ${x0 + w * 0.7},104 ${x0 + w * 0.3},104`} fill={`url(#${uid}-glass)`} stroke={woodDark} stroke-width="2" transform={`skewX(-8)`} />
+    ) : (
+      <rect x={x0 + w * 0.32} y="40" width={w * 0.36} height="64" rx="2" fill={`url(#${uid}-glass)`} stroke={woodDark} stroke-width="2" />
+    )}
+    {/* door handle */}
+    <rect x={x0 + w * 0.62} y="66" width="4" height="16" rx="2" fill={woodDark} />
+    {/* heater glow panels at base */}
+    <rect x={x0 + 6} y="96" width={w - 12} height="6" rx="3" fill={glow} opacity=".9" />
+    {/* bench hint */}
+    <rect x={x0 + 8} y="80" width={w * 0.28} height="5" rx="2.5" fill="rgba(0,0,0,.25)" />
+    <text x="85" y="22" text-anchor="middle" font-size="10" font-weight="800" fill={glow} font-family="system-ui, sans-serif" letter-spacing=".12em">
+      {m.capacity}-PERSON
+    </text>
+  </svg>
+)}

@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import Visual from "../../components/Visual.astro";
+import { MODELS, footprintSqFt } from "../../data/models";
+import { SITE_URL } from "../../lib/site";
+import { breadcrumbLd, itemListLd, faqLd, type Crumb } from "../../lib/schema";
+
+const byScore = [...MODELS].sort((a, b) => b.score - a.score);
+const url = `${SITE_URL}/saunas/`;
+const crumbs: Crumb[] = [
+  { name: "Home", href: "/" },
+  { name: "Compare saunas", href: "/saunas/" },
+];
+const faq = [
+  {
+    q: "Which infrared sauna has the best specs in 2026?",
+    a: `By our research-based score, the ${byScore[0].name} currently ranks highest (${byScore[0].score}/10). The best sauna for you depends on how many people will use it, your room size, and whether you have a 20A circuit — sort the table by the spec that matters most.`,
+  },
+  {
+    q: "What does 'low EMF' mean on an infrared sauna?",
+    a: "Makers quote EMF in milligauss (mG) measured a few inches from the heater panels. 'Ultra-low EMF' models publish under 3 mG; 'low EMF' models typically land around 2–3 mG at 6 inches. Our low-EMF guide explains what the numbers mean and which models publish them.",
+  },
+  {
+    q: "Do infrared saunas need special wiring?",
+    a: "Most cabins on this list run on a standard 120V/15A outlet — true plug-and-play. The exception is the HeatWave Santa Fe corner unit, which needs a 120V/20A circuit. We still recommend a dedicated circuit so the sauna never shares a breaker with other loads.",
+  },
+];
+const jsonLd = [breadcrumbLd(crumbs), itemListLd("Infrared saunas compared", byScore), faqLd(faq)];
+
+const brands = [...new Set(MODELS.map((m) => m.brand))].sort();
+const smallest = [...MODELS].filter((m) => m.heightIn > 0).sort((a, b) => footprintSqFt(a) - footprintSqFt(b))[0];
+---
+
+<BaseLayout
+  title="Infrared Sauna Comparison Chart (2026): Every Model We Track"
+  description={`Compare ${MODELS.length} home infrared saunas side by side: capacity, footprint, heaters, wattage, EMF, electrical needs and our score. Sortable chart.`}
+  canonical={url}
+  jsonLd={jsonLd}
+>
+  <div class="wrap wide">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero" data-pagefind-body>
+      <h1>Infrared sauna comparison chart</h1>
+      <p>
+        Every home sauna we track, side by side. Click any column to sort by it.
+        Covers {MODELS.length} models from {brands.join(", ")} — including the sub-$2,500 Amazon tier
+        the big review sites ignore.
+      </p>
+    </div>
+
+    <ComparisonTable models={byScore} sortable caption="Home infrared saunas, sorted by Guide score (click headers to re-sort)" />
+    <p class="fine">Specs are manufacturer/retailer figures. Prices are typical US street prices as of October 2026 and change often — the smallest footprint here is the {smallest.name} at {footprintSqFt(smallest).toFixed(1)} sq ft.</p>
+
+    <div class="section-head"><h2 class="section-title">Power and value at a glance</h2></div>
+    <div class="viz-pair">
+      <Visual name="chart:wattage" />
+      <Visual name="chart:value" />
+    </div>
+
+    <div class="section-head"><h2 class="section-title">Highest-rated models</h2></div>
+    <div class="tp-grid">
+      {byScore.slice(0, 6).map((m, i) => <ProductCard model={m} rank={i + 1} label="Top rated" />)}
+    </div>
+
+    <div class="prose" style="margin-top:3rem;">
+      <h2>How to read this chart</h2>
+      <p>
+        <strong>Seats</strong> is the maker's rated capacity — 2-person cabins are cozy for two full-size adults,
+        so size up if you'll share often. <strong>Footprint</strong> is the exterior W × D; leave a few inches
+        of clearance on every side. <strong>Wattage</strong> drives both heat-up speed and running cost —
+        check the <a href="/tools/session-cost/">session cost estimator</a>. <strong>Electrical</strong> tells you
+        whether it's plug-and-play 15A or needs a 20A circuit (only the Santa Fe). Our
+        <a href="/posts/how-to-choose-infrared-sauna/">buying guide</a> covers heaters, EMF and wood in depth.
+      </p>
+      <section class="faq" aria-label="FAQ">
+        <h2>FAQ</h2>
+        {faq.map((f) => <details><summary>{f.q}</summary><div>{f.a}</div></details>)}
+      </section>
+    </div>
+  </div>
+</BaseLayout>

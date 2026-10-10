@@ -1,0 +1,122 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE_URL } from "../../lib/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { breadcrumbLd } from "../../lib/schema";
+import { MODELS, sessionKwh } from "../../data/models";
+
+const modelsJson = JSON.stringify(
+  MODELS.map((m) => ({ id: m.id, shortName: m.shortName, wattage: m.wattage, kwh: sessionKwh(m) }))
+);
+
+const title = "Infrared Sauna Session Cost Estimator — What Does Each Session Cost?";
+const description =
+  "Pick a sauna, enter your electricity rate and session length, and see the cost per session, per month and per year.";
+const url = `${SITE_URL}/tools/session-cost/`;
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Tools", href: "/tools/" },
+  { name: "Session cost estimator", href: "/tools/session-cost/" },
+];
+const jsonLd = [breadcrumbLd(crumbs), {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Infrared Sauna Session Cost Estimator",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Any",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  url,
+}];
+---
+
+<BaseLayout title={title} description={description} canonical={url} jsonLd={jsonLd}>
+  <div class="wrap">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero">
+      <h1>What does one sauna session cost?</h1>
+      <p>
+        Infrared cabins sip electricity compared with traditional saunas.
+        Pick a model and see exactly what each session costs you.
+      </p>
+    </div>
+
+    <div class="calc">
+      <div>
+        <label for="model">Sauna model</label>
+        <select id="model">
+          {MODELS.map((m) => <option value={m.id}>{m.name} — {m.wattage.toLocaleString()}W</option>)}
+        </select>
+      </div>
+      <div class="row">
+        <div>
+          <label for="minutes">Session length <output id="minutes-out">45 min</output></label>
+          <input id="minutes" type="range" min="15" max="60" step="5" value="45" />
+        </div>
+        <div>
+          <label for="sessions">Sessions per week <output id="sessions-out">4</output></label>
+          <input id="sessions" type="range" min="1" max="14" step="1" value="4" />
+        </div>
+      </div>
+      <div>
+        <label for="rate">Electricity rate <output id="rate-out">$0.17/kWh</output></label>
+        <input id="rate" type="range" min="0.08" max="0.40" step="0.01" value="0.17" />
+      </div>
+      <p style="margin-top:1.5rem;"><button class="btn" id="calc-btn" type="button">Estimate my cost ⚡</button></p>
+      <div class="calc-result" id="cost-result" aria-live="polite"></div>
+    </div>
+
+    <article class="prose" data-pagefind-body>
+      <h2>Why sessions are so cheap</h2>
+      <p>
+        A 1,600W cabin running a 45-minute session uses about 1.2 kWh — roughly what a
+        hair dryer uses in the same time. At the US average of ~$0.17/kWh, that's about
+        <strong>twenty cents a session</strong>. The blanket models (350–420W) cost under a dime.
+      </p>
+      <p>
+        Traditional Finnish saunas draw 6,000–9,000W and heat a much larger air volume,
+        which is why they cost 4–6× more per session. Infrared heats you, not the room —
+        that's the whole efficiency story.
+      </p>
+    </article>
+  </div>
+
+  <script define:vars={{ modelsJson }}>
+    const MODELS = JSON.parse(modelsJson);
+    const $ = (id) => document.getElementById(id);
+    const bind = (id, fn) => {
+      const el = $(id), out = $(id + "-out");
+      const upd = () => { out.textContent = fn(el.value); };
+      el.addEventListener("input", upd); upd();
+    };
+    bind("minutes", (v) => `${v} min`);
+    bind("sessions", (v) => String(v));
+    bind("rate", (v) => "$" + (+v).toFixed(2) + "/kWh");
+
+    const update = () => {
+      const m = MODELS.find((x) => x.id === $("model").value) ?? MODELS[0];
+      const minutes = +$("minutes").value;
+      const sessions = +$("sessions").value;
+      const rate = +$("rate").value;
+      const kwh = (m.wattage * (minutes / 60)) / 1000;
+      const perSession = kwh * rate;
+      const result = $("cost-result");
+      result.innerHTML = `
+        <h3>${m.shortName}: cost breakdown</h3>
+        <table class="compat-table">
+          <tr><td>Energy per session (${minutes} min @ ${m.wattage.toLocaleString()}W)</td><td><strong>${kwh.toFixed(2)} kWh</strong></td></tr>
+          <tr><td>Cost per session</td><td><strong style="font-size:1.3rem;">$${perSession.toFixed(2)}</strong></td></tr>
+          <tr><td>Per month (${sessions}×/week)</td><td><strong>$${(perSession * sessions * 4.33).toFixed(2)}</strong></td></tr>
+          <tr><td>Per year</td><td><strong>$${(perSession * sessions * 52).toFixed(2)}</strong></td></tr>
+        </table>
+        <p style="font-size:.87rem;color:#5c6f60;">One spa visit ($40–$60) buys roughly ${Math.round(50 / Math.max(perSession, 0.01)).toLocaleString()} sessions in this cabin.</p>`;
+      result.classList.add("show");
+    };
+    $("calc-btn").addEventListener("click", () => {
+      update();
+      $("cost-result").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+    $("model").addEventListener("change", update);
+    update();
+  </script>
+</BaseLayout>

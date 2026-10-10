@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { ACCESSORIES, KIND_LABEL, type AccessoryKind } from "../data/accessories";
+import { AFFILIATE_REL, amazonLink } from "../lib/amazon";
+import { SITE_URL } from "../lib/site";
+import { breadcrumbLd, type Crumb } from "../lib/schema";
+
+const crumbs: Crumb[] = [
+  { name: "Home", href: "/" },
+  { name: "Accessories", href: "/accessories/" },
+];
+const SECTIONS: { kinds: AccessoryKind[]; title: string; blurb: string; more?: string }[] = [
+  { kinds: ["meter"], title: "Meters and monitors", blurb: "Verify EMF claims and know your real bench temperature — the two numbers that matter most.", more: "/posts/low-emf-infrared-sauna-guide/" },
+  { kinds: ["comfort"], title: "Comfort upgrades", blurb: "Backrests and floor mats that make 30-minute sessions genuinely comfortable." },
+  { kinds: ["care"], title: "Care and aroma", blurb: "Protect the wood, keep it clean, and add the classic sauna scent." },
+];
+const jsonLd = [
+  breadcrumbLd(crumbs),
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Infrared sauna accessories",
+    url: `${SITE_URL}/accessories/`,
+  },
+];
+---
+
+<BaseLayout
+  title="Infrared Sauna Accessories: EMF Meters, Backrests & Care"
+  description={`${ACCESSORIES.length} infrared sauna accessories: EMF meters, thermometers, wooden backrests, seat pads and care products. Universal fit, all on Amazon.`}
+  canonical={`${SITE_URL}/accessories/`}
+  jsonLd={jsonLd}
+>
+  <div class="wrap wide">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero" data-pagefind-body>
+      <h1>Infrared sauna accessories</h1>
+      <p>Meters, comfort upgrades and care products for the saunas we review — all universal fit, all sold on Amazon.</p>
+    </div>
+    {SECTIONS.map((sec) => {
+      const items = ACCESSORIES.filter((a) => sec.kinds.includes(a.kind));
+      return (
+        <section class="acc-section">
+          <div class="section-head">
+            <h2 class="section-title">{sec.title}</h2>
+            {sec.more && <a class="section-link" href={sec.more}>Buying guide →</a>}
+          </div>
+          <p class="acc-intro">{sec.blurb}</p>
+          <ul class="acc-list">
+            {items.map((a) => (
+              <li class="acc-row">
+                <span class="acc-kind">{KIND_LABEL[a.kind]}</span>
+                <div class="acc-main">
+                  <strong>{a.name}</strong>
+                  <span class="acc-tag">Universal fit · ~${a.price}</span>
+                  <p>{a.why}</p>
+                </div>
+                <div class="acc-buy">
+                  <a class="btn buy btn-xs" href={amazonLink(a.query)} rel={AFFILIATE_REL} target="_blank">Check price</a>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })}
+    <p class="fine">Prices are typical Amazon street prices, checked October 2026. Confirm compatibility on the listing before buying.</p>
+  </div>
+</BaseLayout>

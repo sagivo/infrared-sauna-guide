@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { SITE_URL } from "../../lib/site";
+import { breadcrumbLd, type Crumb } from "../../lib/schema";
+
+const crumbs: Crumb[] = [
+  { name: "Home", href: "/" },
+  { name: "Tools", href: "/tools/" },
+];
+const tools = [
+  { href: "/tools/cost-calculator/", icon: "🔥", name: "Sauna Cost Calculator", text: "The true 5-year cost of ownership: purchase price, electrical work, and running costs for your usage.", go: "Do the math" },
+  { href: "/tools/space-fit-checker/", icon: "📐", name: "Space-Fit Checker", text: "Enter your room's dimensions and see which cabins fit, with assembly clearance included.", go: "Check my room" },
+  { href: "/tools/session-cost/", icon: "⚡", name: "Session Cost Estimator", text: "What does one sauna session cost in electricity? Pick a model and see per-session, monthly and yearly costs.", go: "Estimate a session" },
+  { href: "/saunas/", icon: "📊", name: "Comparison Chart", text: "Every model side by side: capacity, footprint, heaters, wattage, EMF and price. Sortable.", go: "Compare models" },
+  { href: "/accessories/", icon: "🧰", name: "Accessories Finder", text: "EMF meters, backrests, seat pads and care products that fit any infrared sauna.", go: "Find accessories" },
+];
+---
+
+<BaseLayout
+  title="Free Infrared Sauna Calculators & Tools"
+  description="Free infrared sauna tools: 5-year cost calculator, room space-fit checker, per-session electricity cost estimator and a sortable comparison chart."
+  canonical={`${SITE_URL}/tools/`}
+  jsonLd={breadcrumbLd(crumbs)}
+>
+  <div class="wrap wide">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero">
+      <h1>Free infrared sauna tools</h1>
+      <p>Turn "which sauna should I buy?" into numbers. Every tool runs in your browser, and nothing you enter leaves your device.</p>
+    </div>
+    <div class="tool-grid">
+      {tools.map((t) => (
+        <a class="tool-card" href={t.href}>
+          <div class="tool-icon">{t.icon}</div>
+          <h2 class="h3">{t.name}</h2>
+          <p>{t.text}</p>
+          <span class="go">{t.go}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

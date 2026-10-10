@@ -1,0 +1,156 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE_URL } from "../../lib/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { breadcrumbLd } from "../../lib/schema";
+import { MODELS, priceTier, sessionKwh } from "../../data/models";
+import { amazonLink } from "../../lib/amazon";
+
+const modelsJson = JSON.stringify(
+  MODELS.map((m) => ({ id: m.id, name: m.name, shortName: m.shortName, priceLow: m.priceLow, tier: `${priceTier(m).sym} ${priceTier(m).label}`, kwh: sessionKwh(m), score: m.score, link: amazonLink(m.query, m.asin) }))
+);
+
+const title = "Infrared Sauna Cost Calculator — True 5-Year Cost of Ownership";
+const description =
+  "What does a home infrared sauna really cost? Enter your electricity rate and usage to see the 5-year total: purchase, electrical work, and running costs.";
+const url = `${SITE_URL}/tools/cost-calculator/`;
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Tools", href: "/tools/" },
+  { name: "Cost calculator", href: "/tools/cost-calculator/" },
+];
+const jsonLd = [breadcrumbLd(crumbs), {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Infrared Sauna Cost Calculator",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Any",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  url,
+}];
+---
+
+<BaseLayout title={title} description={description} canonical={url} jsonLd={jsonLd}>
+  <div class="wrap">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero">
+      <h1>What does a home sauna really cost?</h1>
+      <p>
+        The sticker price is only the start. Add electrical work and five years of
+        sessions to see the true cost of ownership — then compare models.
+      </p>
+    </div>
+
+    <div class="calc">
+      <div>
+        <label for="sauna-price">Sauna purchase price <output id="sauna-price-out">$1,800</output></label>
+        <input id="sauna-price" type="range" min="400" max="3000" step="50" value="1800" />
+      </div>
+      <div>
+        <label for="electrical">Electrical work needed</label>
+        <select id="electrical">
+          <option value="0">None — I have a free 120V outlet on a dedicated circuit</option>
+          <option value="250">Minor — new outlet on existing circuit (~$250)</option>
+          <option value="600" selected>Dedicated 15A/20A circuit run (~$600)</option>
+          <option value="1200">Panel work + long run (~$1,200)</option>
+        </select>
+      </div>
+      <div class="row">
+        <div>
+          <label for="sessions">Sessions per week <output id="sessions-out">4</output></label>
+          <input id="sessions" type="range" min="1" max="7" step="1" value="4" />
+        </div>
+        <div>
+          <label for="rate">Electricity rate <output id="rate-out">$0.17/kWh</output></label>
+          <input id="rate" type="range" min="0.08" max="0.40" step="0.01" value="0.17" />
+        </div>
+      </div>
+      <div>
+        <label for="wattage">Sauna wattage <output id="wattage-out">1,600W</output></label>
+        <input id="wattage" type="range" min="350" max="2200" step="10" value="1600" />
+      </div>
+      <p style="margin-top:1.5rem;"><button class="btn" id="calc-btn" type="button">Calculate my 5-year cost 🔥</button></p>
+      <div class="calc-result" id="cost-result" aria-live="polite"></div>
+    </div>
+
+    <article class="prose" data-pagefind-body>
+      <h2>What the numbers usually show</h2>
+      <p>
+        A mid-range 2-person cabin (~$1,800) with a new dedicated circuit (~$600) and four
+        45-minute sessions a week at $0.17/kWh costs roughly <strong>$2,700–$3,000 over five years</strong> —
+        and electricity is only about $150 of that. The purchase price dominates; running costs are small.
+      </p>
+      <h2>Where the money actually goes</h2>
+      <ul>
+        <li><strong>The cabin (70–80%):</strong> the one cost you control most by choosing well.</li>
+        <li><strong>Electrical (10–20%):</strong> a dedicated 15A or 20A circuit is the single best install upgrade — it prevents nuisance breaker trips.</li>
+        <li><strong>Electricity (~5%):</strong> even a 1,805W cabin costs well under $1 per session at typical US rates.</li>
+        <li><strong>Upkeep (small):</strong> seat pads, wood cleaner, and eventually a heater panel — budget ~$30/year.</li>
+      </ul>
+      <p>
+        Compare that with a spa: at $40–$60 per sauna visit, four sessions a week would run
+        <strong>$8,000+ a year</strong>. A home cabin typically pays for itself in under a year of regular use.
+      </p>
+    </article>
+  </div>
+
+  <script define:vars={{ modelsJson }}>
+    const MODELS = JSON.parse(modelsJson);
+    const $ = (id) => document.getElementById(id);
+    const fmt = (n) => "$" + Math.round(n).toLocaleString("en-US");
+    const bind = (id, fn) => {
+      const el = $(id), out = $(id + "-out");
+      const upd = () => { out.textContent = fn(+el.value); };
+      el.addEventListener("input", upd); upd();
+    };
+    bind("sauna-price", (v) => fmt(v));
+    bind("sessions", (v) => String(v));
+    bind("rate", (v) => "$" + v.toFixed(2) + "/kWh");
+    bind("wattage", (v) => v.toLocaleString() + "W");
+
+    function modelPicks(budget) {
+      const picks = MODELS.filter((m) => m.priceLow <= budget * 1.15)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 3);
+      if (!picks.length) return "";
+      const cards = picks.map((m) => `
+        <div class="model-pick">
+          <h4><a href="/saunas/${m.id}/">${m.name}</a> <span class="score sm">${m.score.toFixed(1)}</span></h4>
+          <p class="specs">${m.tier} price tier · from ~${m.priceLow.toLocaleString()}</p>
+          <div class="pc-actions"><a class="btn buy btn-sm" href="${m.link}" rel="sponsored nofollow noopener" target="_blank">Check price on Amazon</a><a class="pc-review" href="/saunas/${m.id}/">Full review</a></div>
+        </div>`).join("");
+      return `<h3 style="margin-top:1.5rem;">Top-rated saunas around ${fmt(budget)}</h3>${cards}
+        <p class="fine">As an Amazon Associate we earn from qualifying purchases.</p>`;
+    }
+
+    $("calc-btn").addEventListener("click", () => {
+      const price = +$("sauna-price").value;
+      const electrical = +$("electrical").value;
+      const sessions = +$("sessions").value;
+      const rate = +$("rate").value;
+      const wattage = +$("wattage").value;
+
+      const kwhPerSession = (wattage * 0.75) / 1000; // 45-min session
+      const yearlyKwh = kwhPerSession * sessions * 52;
+      const yearlyEnergy = yearlyKwh * rate;
+      const fiveYear = price + electrical + yearlyEnergy * 5 + 150; // +$150 upkeep
+      const perSession = (price + electrical + 150) / (sessions * 52 * 5) + kwhPerSession * rate;
+      const result = $("cost-result");
+
+      result.innerHTML = `
+        <h3>Your 5-year cost</h3>
+        <table class="compat-table">
+          <tr><td>Cabin + electrical</td><td><strong>${fmt(price + electrical)}</strong></td></tr>
+          <tr><td>5 years of electricity (${sessions}×/week)</td><td><strong>${fmt(yearlyEnergy * 5)}</strong> <span style="color:#5c6f60;font-size:.85rem;">(~${(kwhPerSession * rate).toFixed(2)}/session)</span></td></tr>
+          <tr><td>Upkeep (pads, cleaner)</td><td><strong>~$150</strong></td></tr>
+          <tr><td><strong>5-year total</strong></td><td><strong style="font-size:1.3rem;">${fmt(fiveYear)}</strong></td></tr>
+          <tr><td>Effective cost per session</td><td><strong>~$${perSession.toFixed(2)}</strong></td></tr>
+        </table>
+        <p style="font-size:.87rem;color:#5c6f60;">A spa charges $40–$60 per visit. At ${sessions} sessions a week, this cabin pays for itself in months, not years.</p>
+        ${modelPicks(price)}`;
+      result.classList.add("show");
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  </script>
+</BaseLayout>

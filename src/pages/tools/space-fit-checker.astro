@@ -1,0 +1,127 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE_URL } from "../../lib/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { breadcrumbLd } from "../../lib/schema";
+import { MODELS, footprintSqFt } from "../../data/models";
+import { amazonLink } from "../../lib/amazon";
+
+const modelsJson = JSON.stringify(
+  MODELS.filter((m) => m.heightIn > 0).map((m) => ({
+    id: m.id, name: m.name, shortName: m.shortName, w: m.footprint[0], d: m.footprint[1], h: m.heightIn,
+    capacity: m.capacity, sqft: +footprintSqFt(m).toFixed(1), score: m.score, priceLow: m.priceLow,
+    link: amazonLink(m.query, m.asin),
+  }))
+);
+
+const title = "Sauna Space-Fit Checker — Will It Fit in Your Room?";
+const description =
+  "Enter your room's dimensions and see which infrared saunas fit, with assembly clearance included. Free, runs in your browser.";
+const url = `${SITE_URL}/tools/space-fit-checker/`;
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Tools", href: "/tools/" },
+  { name: "Space-fit checker", href: "/tools/space-fit-checker/" },
+];
+const jsonLd = [breadcrumbLd(crumbs), {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Infrared Sauna Space-Fit Checker",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Any",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  url,
+}];
+---
+
+<BaseLayout title={title} description={description} canonical={url} jsonLd={jsonLd}>
+  <div class="wrap">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero">
+      <h1>Will a sauna fit in your room?</h1>
+      <p>
+        Enter your room's width, depth and ceiling height. We add the clearance
+        installers recommend and show every cabin that fits.
+      </p>
+    </div>
+
+    <div class="calc">
+      <div class="row">
+        <div>
+          <label for="room-w">Room width <output id="room-w-out">96 in (8 ft)</output></label>
+          <input id="room-w" type="range" min="36" max="180" step="1" value="96" />
+        </div>
+        <div>
+          <label for="room-d">Room depth <output id="room-d-out">96 in (8 ft)</output></label>
+          <input id="room-d" type="range" min="36" max="180" step="1" value="96" />
+        </div>
+      </div>
+      <div>
+        <label for="room-h">Ceiling height <output id="room-h-out">96 in (8 ft)</output></label>
+        <input id="room-h" type="range" min="60" max="120" step="1" value="96" />
+      </div>
+      <p>
+        <label for="doorway"><input id="doorway" type="checkbox" checked style="width:auto;margin-right:.5rem;" />My doorways/hallways are at least 30" wide (needed for panel delivery)</label>
+      </p>
+      <p style="margin-top:1.5rem;"><button class="btn" id="calc-btn" type="button">Check my room 📐</button></p>
+      <div class="calc-result" id="fit-result" aria-live="polite"></div>
+    </div>
+
+    <article class="prose" data-pagefind-body>
+      <h2>How we judge "fits"</h2>
+      <ul>
+        <li><strong>Footprint + 4" clearance</strong> on each side for assembly and airflow.</li>
+        <li><strong>Height + 3"</strong> for tipping wall panels upright during assembly.</li>
+        <li><strong>Door swing:</strong> hinged glass doors need clear space in front — corner units angle the door, which helps.</li>
+        <li><strong>Delivery path:</strong> panels ship flat but long (up to 75"). Measure hallways and stair turns too.</li>
+      </ul>
+      <p>
+        The most common mistake is buying for the room while forgetting the hallway.
+        If a cabin barely fits your room, check the delivery path before you order.
+      </p>
+    </article>
+  </div>
+
+  <script define:vars={{ modelsJson }}>
+    const MODELS = JSON.parse(modelsJson);
+    const $ = (id) => document.getElementById(id);
+    const inFt = (v) => `${v} in (${(v / 12).toFixed(v % 12 ? 1 : 0)} ft)`;
+    const bind = (id) => {
+      const el = $(id), out = $(id + "-out");
+      const upd = () => { out.textContent = inFt(+el.value); };
+      el.addEventListener("input", upd); upd();
+    };
+    bind("room-w"); bind("room-d"); bind("room-h");
+
+    $("calc-btn").addEventListener("click", () => {
+      const rw = +$("room-w").value, rd = +$("room-d").value, rh = +$("room-h").value;
+      const doorwayOk = $("doorway").checked;
+      // 4" clearance per side on footprint, 3" on height; allow rotating the cabin 90°.
+      const fits = MODELS.filter((m) =>
+        ((m.w + 8 <= rw && m.d + 8 <= rd) || (m.d + 8 <= rw && m.w + 8 <= rd)) && m.h + 3 <= rh
+      ).sort((a, b) => b.score - a.score);
+      const tight = MODELS.filter((m) => !fits.includes(m) &&
+        ((m.w + 4 <= rw && m.d + 4 <= rd) || (m.d + 4 <= rw && m.w + 4 <= rd)) && m.h <= rh
+      ).sort((a, b) => b.score - a.score);
+      const result = $("fit-result");
+
+      const card = (m, note) => `
+        <div class="model-pick">
+          <h4><a href="/saunas/${m.id}/">${m.name}</a> <span class="score sm">${m.score.toFixed(1)}</span></h4>
+          <p class="specs">${m.capacity}-person · ${m.sqft} sq ft footprint · from ~$${m.priceLow.toLocaleString()}${note ? ` · <em>${note}</em>` : ""}</p>
+          <div class="pc-actions"><a class="btn buy btn-sm" href="${m.link}" rel="sponsored nofollow noopener" target="_blank">Check price on Amazon</a><a class="pc-review" href="/saunas/${m.id}/">Full review</a></div>
+        </div>`;
+
+      result.innerHTML = `
+        <h3>${fits.length ? `${fits.length} sauna${fits.length > 1 ? "s" : ""} fit${fits.length > 1 ? "" : "s"} your room` : "Nothing fits with comfortable clearance"}</h3>
+        ${!doorwayOk ? `<p style="font-size:.9rem;color:#8a5a2e;">⚠️ Your doorways are under 30" — confirm panel dimensions with the seller before ordering any cabin; freight returns are expensive.</p>` : ""}
+        ${fits.map((m) => card(m)).join("")}
+        ${tight.length ? `<h3 style="margin-top:1.5rem;">Tight but possible (${tight.length})</h3><p class="fine">These fit the footprint but leave under 4" of clearance — assembly will be fiddly and airflow reduced.</p>${tight.map((m) => card(m, "tight fit")).join("")}` : ""}
+        ${!fits.length && !tight.length ? `<p>No cabin on our list fits a ${rw}" × ${rd}" room with ${rh}" ceilings. The <a href="/saunas/higherdose-sauna-blanket/">HigherDOSE sauna blanket</a> needs no floor space at all.</p>` : ""}
+        <p class="fine">As an Amazon Associate we earn from qualifying purchases.</p>`;
+      result.classList.add("show");
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  </script>
+</BaseLayout>
