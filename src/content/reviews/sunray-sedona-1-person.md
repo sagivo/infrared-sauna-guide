@@ -47,3 +47,9 @@ The footprint is also larger than the Elite's, so this isn't the pick for the ti
 ## Verdict
 
 The SunRay Sedona 1-Person is the cedar choice: the only Canadian red cedar cabin in this guide, with generous heater coverage, chromotherapy, Bluetooth, and a 7-year structural warranty. It's priced like a premium solo unit because it is one. If the cedar experience is what you're after, nothing else here offers it — check the current price on Amazon.
+
+## Worth knowing before you buy
+
+**Cedar is the differentiator.** The Sedona is the only Canadian red cedar cabin in this guide — everything else is hemlock. Cedar costs more but brings the classic sauna aroma and natural durability buyers associate with traditional saunas. If that matters to you, the premium over the [Dynamic Elite](/saunas/dynamic-elite-1-person/) is the price of the wood, not just the brand.
+
+**Not the tight-space pick.** At 36"W x 42"D it's notably larger than the Elite's 28" x 35.5" — this is a real corner of a room, not a closet nook. Solo buyers choosing on footprint alone should compare both in our [1-person vs 2-person guide](/posts/1-person-vs-2-person-infrared-sauna/) before deciding.
