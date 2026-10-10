@@ -43,3 +43,9 @@ The 120V/15A plug-and-play setup is standard, so no electrical advantages or sur
 ## Verdict
 
 The Radiant Saunas Coronado 2-Person is the warranty pick: the longest coverage in this guide, a genuinely roomy two-person cabin, and a solid feature set with chromotherapy and an oxygen ionizer. If "will this last" is your top question, seven years of coverage is the strongest answer under $2,000. Check the current price on Amazon to see where it sits in its range.
+
+## Worth knowing before you buy
+
+**Seven years is the statement.** The Coronado's warranty is the longest in this guide — more than triple the JNH Joyous's two years. If longevity is the top question, that coverage plus a roomy cabin and chromotherapy/ionizer extras make the mid-pack price (~$1,499–$1,999) easy to justify. Our [how-to-choose guide](/posts/how-to-choose-infrared-sauna/) explains how to weigh warranty against price.
+
+**Versus the value pick.** The honest alternative is the [JNH Joyous](/saunas/jnh-joyous-2-person/): more heaters per dollar and a published EMF figure, but a much shorter warranty. Choose the Coronado for peace of mind, the Joyous for maximum spec-per-dollar.
