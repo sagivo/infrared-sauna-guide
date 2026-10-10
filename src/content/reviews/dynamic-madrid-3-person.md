@@ -45,3 +45,9 @@ Footprint: 60 inches deep is a lot of room. This cabin needs a dedicated space �
 ## Verdict
 
 The Dynamic Madrid 3-Person is the no-compromise capacity pick: three-person seating, ultra-low EMF heaters, and standard 120V/15A power that keeps installation at zero. It's the most expensive cabin here, but it's also the only one that gives three-person room without an electrician. If capacity is the goal and your panel stays untouched, this is it — check the current price on Amazon.
+
+## Worth knowing before you buy
+
+**The 15A advantage is real.** The Madrid is the only 3-person cabin here that runs on a standard 120V/15A outlet — a genuine differentiator if your panel has no room for a new circuit or you rent. See our [electrical requirements guide](/posts/infrared-sauna-electrical-requirements/) for the full 15A vs 20A picture.
+
+**It's the priciest cabin here.** Ultra-low EMF, three-person room, and plug-and-play power sit at the top of this guide's price range. Be honest about headcount: if family sauna nights happen twice a year, a 2-person cabin plus the savings may serve you better — our [1-person vs 2-person comparison](/posts/1-person-vs-2-person-infrared-sauna/) makes the same point about buying only the capacity you'll actually use.
