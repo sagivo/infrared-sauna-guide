@@ -48,3 +48,9 @@ Heat-up expectations matter too. Infrared cabins take time to reach the 118–13
 ## Verdict
 
 The Dynamic Venice Elite is the most complete package in the Amazon infrared sauna tier: low-EMF far-infrared heat, quality hemlock construction, a genuinely one-hour assembly, useful extras, and a 5-year warranty at a mid-tier price. It wins best overall not by being the cheapest or the largest, but by making the fewest compromises. If you want a two-person cabin that plugs into a normal outlet and just works, this is our first recommendation — check the current price on Amazon to confirm the latest deal.
+
+## Worth knowing before you buy
+
+**Why it wins best overall.** The Venice Elite doesn't top any single spec chart — it wins by making the fewest compromises across heaters, build, assembly, extras, and warranty. Buyers who don't want to overthink it can stop here; our [best infrared saunas of 2026](/posts/best-infrared-saunas-2026/) shows how it stacks against the full field.
+
+**The EMF story, honestly.** Dynamic's "ultra-low EMF" is a manufacturer tier, not a certified standard, and Dynamic publishes no milligauss figures — so you can't verify the gap against competitors. If you want a number rather than a badge, JNH's published 2–3 mG is the only one in this guide. Our [low-EMF guide](/posts/low-emf-infrared-sauna-guide/) explains what the figures (and the labels) actually mean.
