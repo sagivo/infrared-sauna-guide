@@ -1,5 +1,6 @@
 ---
 title: "Infrared Sauna Electrical Requirements: 15A vs 20A, Circuits & Setup"
+seoTitle: "Infrared Sauna Electrical Requirements (2026)"
 description: "Do you need an electrician? Plug-and-play 120V/15A vs 120V/20A explained, dedicated circuit advice, and real per-session electricity cost math."
 pubDate: 2026-10-10
 updatedDate: 2026-10-10
